@@ -5,6 +5,12 @@ clear_and_print()
   clear
   echo $1
 }
+space()
+{
+  echo
+  echo
+  echo
+}
 
 #making useful directories
 clear_and_print 'creating folders'
@@ -142,3 +148,15 @@ cp ./OS/.zshrc ~/.zshrc
 echo 'be sure to see if all zsh stuff works, tutorial here: https://blog.rocketseat.com.br/terminal-com-oh-my-zsh-spaceship-dracula-e-mais/'
 
 wget -qO- https://raw.githubusercontent.com/hfabio/updater-stuff/master/install.sh | bash
+
+clear_and_print "All setted, now remember to install all gnome-extensions"
+space
+echo "Clipboard Indicator: https://extensions.gnome.org/extension/779/clipboard-indicator/"
+echo "GameMode: https://extensions.gnome.org/extension/1852/gamemode/"
+echo "NoAnnoyance: https://extensions.gnome.org/extension/2182/noannoyance/"
+echo "Status Area Horizontal Spacing: https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/"
+echo "Sound Input & Output Device Chooser: https://extensions.gnome.org/extension/906/sound-output-device-chooser/"
+echo "Simple monitor: https://extensions.gnome.org/extension/3891/simple-monitor/"
+echo "Removable Drive Menu: https://extensions.gnome.org/extension/7/removable-drive-menu/"
+space
+read -p 'Ctrl + click to see, and when finished just press enter to finish process!'
