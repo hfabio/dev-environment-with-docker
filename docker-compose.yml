@@ -1,25 +1,38 @@
 version: '3'
 
 services:
-  nodejs:
+  mysql:
     build:
-      context: .
-      dockerfile: Dockerfile
-    image: nodejs
-    container_name: nodejs
+      context: ./mysql
+      dockerfile: Dockerfile-mysql
+    image: mysql-5.7
+    container_name: mysql-5.7
     restart: unless-stopped
     env_file: .env
+    network_mode: "bridge"
     environment:
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=db
-      - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
+      - MYSQL_ROOT_HOST='%'
+      # - MYSQL_ROOT_HOST=192.168.0.2/255.255.255.248
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - max-allowed-packet=67108864
+    expose: 
+      - 3306
     ports:
-      - "80:8080"
+      - 3306:3306
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    networks:
-      - app-network
-    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
+      - /var/lib/mysql:/var/lib/mysql
+  apache2:
+    build:
+      context: ./php-apache
+      dockerfile: Dockerfile-php-apache
+    image: apache-php-7.2
+    container_name: apache-php-7.2
+    restart: unless-stopped
+    network_mode: "bridge"
+    expose:
+    - 80
+    ports:
+      - 80:80
+    volumes:
+      - /var/www/html:/var/www/html
+  
