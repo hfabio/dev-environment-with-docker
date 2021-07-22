@@ -30,7 +30,7 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y &
 sudo apt-add-repository ppa:graphics-drivers/ppa -y
 
 #first let's install some stuff to make another stuff work or to controll system
-sudo apt-get update && sudo apt install curl -y && sudo apt-get install git zsh vim htop filezilla mc fonts-powerline gnome-tweaks -y
+sudo apt-get update && sudo apt install curl -y && sudo apt-get install git zsh vim htop filezilla mc fonts-powerline gnome-tweaks flatpak gnome-software-plugin-flatpak -y
 sudo apt-get install ttf-mscorefonts-installer ubuntu-restricted-extras libavcodec-extra libav-tools -y
 
 #python
@@ -76,6 +76,7 @@ sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
 sudo add-apt-repository ppa:lutris-team/lutris -y
 wget -nc https://dl.winehq.org/wine-builds/winehq.key
 sudo apt-key add winehq.key -y
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo apt update
 # end removing stuff and adding ppas------------------
 
