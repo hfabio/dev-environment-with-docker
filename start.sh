@@ -137,7 +137,9 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y &
 # lets install
 clear_and_print "Let's install zsh with configurated theme\nPay attention, you will need to insert your password here..."
 
-wget -qO- https://raw.githubusercontent.com/hfabio/zsh-magic-install/master/zsh-magic-install | bash
+wget https://raw.githubusercontent.com/hfabio/zsh-magic-install/master/zsh-magic-install -O /tmp/zsh-magic-install.sh
+sudo chmod 775 /tmp/zsh-magic-install.sh
+/tmp/zsh-magic-install.sh
 
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
@@ -145,6 +147,10 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 cp ./OS/.zshrc ~/.zshrc
+
+chsh -s $(which zsh)
+
+source ~/.zshrc
 echo 'be sure to see if all zsh stuff works, tutorial here: https://blog.rocketseat.com.br/terminal-com-oh-my-zsh-spaceship-dracula-e-mais/'
 
 wget -qO- https://raw.githubusercontent.com/hfabio/updater-stuff/master/install.sh | bash
