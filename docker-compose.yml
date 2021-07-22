@@ -4,16 +4,22 @@ services:
   mysql:
     build:
       context: ./mysql
-      dockerfile: Dockerfile-mysql
+      dockerfile: Dockerfile
     image: mysql-5.7
     container_name: mysql-5.7
     restart: unless-stopped
     env_file: .env
-    network_mode: "bridge"
+    command: --init-file /data/application/init.sql
+    # networks: 
+    #   - dev
+    network_mode: "host"
     environment:
-      - MYSQL_ROOT_HOST='%'
-      # - MYSQL_ROOT_HOST=192.168.0.2/255.255.255.248
+      - MYSQL_ROOT_USER=root
       - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_ROOT_HOST='%'
+      # - MYSQL_USER=root
+      # - MYSQL_PASSWORD=$MYSQL_ROOT_PASSWORD
+      # - MYSQL_ROOT_HOST=192.168.0.2/255.255.255.248
       - max-allowed-packet=67108864
     expose: 
       - 3306
@@ -21,18 +27,22 @@ services:
       - 3306:3306
     volumes:
       - /var/lib/mysql:/var/lib/mysql
+      - ./mysql/init.sql:/data/application/init.sql
   apache2:
     build:
       context: ./php-apache
-      dockerfile: Dockerfile-php-apache
+      dockerfile: Dockerfile
     image: apache-php-7.2
     container_name: apache-php-7.2
     restart: unless-stopped
-    network_mode: "bridge"
+    # networks: 
+    #   - dev
+    network_mode: "host"
     expose:
     - 80
     ports:
       - 80:80
     volumes:
       - /var/www/html:/var/www/html
-  
+# networks: 
+#   dev:
