@@ -18,6 +18,8 @@ sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.i
 
 sudo docker run hello-world &&
 
+sudo usermod -aG docker $USER &&
+
 clear
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
