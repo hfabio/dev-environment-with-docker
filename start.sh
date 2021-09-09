@@ -60,6 +60,8 @@ wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd6
 # wget https://repo.skype.com/latest/skypeforlinux-64.deb -O /tmp/skypeforlinux.deb
 # discord
 wget https://dl.discordapp.net/apps/linux/0.0.10/discord-0.0.10.deb -O /tmp/discord.deb
+# betterDiscord
+wget https://github.com/BetterDiscord/Installer/releases/latest/download/BetterDiscord-Linux.AppImage -O /tmp/BetterDiscord-Linux.AppImage
 # 4k video downloader
 # wget https://dl.4kdownload.com/app/4kvideodownloader_4.9.2-1_amd64.deb -O /tmp/4kvideodownloader.deb
 # notable
@@ -70,7 +72,10 @@ wget https://github.com/cheesecakeufo/komorebi/releases/download/v2.1/komorebi-2
 # now installing .deb stuff ----------------------------------------------------
 clear_and_print 'now installing .deb stuff'
 sudo chmod 775 /tmp/*.deb
+sudo chmod 775 /tmp/*.AppImage
 sudo dpkg -i /tmp/*.deb || sudo apt-get --fix-broken install -y && sudo dpkg -i /tmp/*.deb
+
+./tmp/BetterDiscord-Linux.AppImage
 
 # now installing no important stuff like games or music ------------------------
 clear_and_print 'now installing no important stuff like games or music'
