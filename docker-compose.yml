@@ -43,8 +43,8 @@ services:
     ports:
       - 80:80
     volumes:
-      # - /var/www/html:/var/www/html
-      - ~/Projetos/reload/reload_dashboard_backoffice/:/var/www/html/
+      - /var/www/html:/var/www/html
+      # - ~/Projetos/reload/reload_dashboard_backoffice/:/var/www/html/
       - /usr/local/etc/php/:/usr/local/etc/php/
 # networks: 
 #   dev:
