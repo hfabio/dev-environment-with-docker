@@ -99,17 +99,37 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# -------------- alias definition --------------
 alias run-api="cd ~/Projetos/reload/reload_chatbot_api ; yarn dev"
 alias tablet="emulator -avd android_tablet"
+# -------------- deploy --------------
+alias deploy-dashboard-nutripoint-test="cd ~/Projetos/reload/nutripoint-dashboard ; git pull && yarn && yarn deploy_test"
+alias deploy-dashboard-nutripoint-production="cd ~/Projetos/reload/nutripoint-dashboard ; git pull && yarn && yarn deploy_production"
+alias deploy-dashboard-pro-nutripoint-test="cd ~/Projetos/reload/nutripoint-pharmacy-dashboard ; git pull && yarn && yarn deploy_test"
+alias deploy-quiz-nutripoint-test="cd ~/Projetos/reload/quiz_nutripoint ; git pull && yarn && yarn deploy_test"
+alias deploy-quiz-nutripoint-production="cd ~/Projetos/reload/quiz_nutripoint ; git pull && yarn && yarn deploy_production"
+alias deploy-quiz-new-wizard-test="cd ~/Projetos/reload/quiz_new_wizard ; git pull && yarn && yarn deploy_test"
+alias deploy-quiz-new-wizard-dashboard="cd ~/Projetos/reload/quiz_new_wizard ; git pull && yarn && yarn deploy_dashboard"
+alias deploy-quiz-new-wizard-europe-production="cd ~/Projetos/reload/quiz_new_wizard ; git pull && yarn && yarn deploy_production"
+# ----------- end deploy -------------
 
-# export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-# export ANDROID_HOME=/home/hfabio/android-sdk
-# export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:${PATH}
-# export ANDROID_SDK_ROOT=$ANDROID_HOME
+# ------------ end alias definition ------------
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 #export NODE_PATH=`which node`
+
+export DENO_INSTALL="/home/hfabio/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+
+export ANDROID_HOME=/home/$USER/android-sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:${PATH}
+
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
